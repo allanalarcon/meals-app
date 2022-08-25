@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'pages/category_meals_page.dart';
 import 'pages/categories_page.dart';
 import 'pages/meal_page.dart';
+import 'pages/tabs_page.dart';
+import 'pages/filters_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
               primary: Colors.indigo,
               secondary: Colors.indigoAccent,
             ),
-        canvasColor: Color.fromRGBO(255, 254, 229, 1),
+        canvasColor: Color.fromARGB(255, 239, 247, 253),
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
               bodyLarge: TextStyle(
@@ -33,10 +35,12 @@ class MyApp extends StatelessWidget {
               ),
             ),
       ),
-      home: CategoriesPage(),
+      initialRoute: '/',
       routes: {
+        '/': (context) => TabsPage(),
         CategoryMealPage.routeName: (context) => CategoryMealPage(),
         MealPage.routeName: (context) => MealPage(),
+        FiltersPage.routeName: (context) => FiltersPage(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (context) => CategoriesPage());
