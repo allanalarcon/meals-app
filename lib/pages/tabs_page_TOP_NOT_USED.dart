@@ -33,7 +33,7 @@ class _TabsPageState extends State<TabsPage> {
         ),
         body: TabBarView(children: [
           CategoriesPage(),
-          FavoritesPage(),
+          //FavoritesPage(),
         ]),
       ),
     );

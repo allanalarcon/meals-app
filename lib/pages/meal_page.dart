@@ -5,6 +5,9 @@ import '../data/dummy_data.dart';
 class MealPage extends StatelessWidget {
   static const routeName = '/meal';
 
+  final Function toggleFavorite;
+  final Function isFavorite;
+
   Widget buildSectionTitle(BuildContext context, String title) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -30,7 +33,8 @@ class MealPage extends StatelessWidget {
     );
   }
 
-  const MealPage({Key key}) : super(key: key);
+  const MealPage(this.toggleFavorite, this.isFavorite, {Key key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,10 +93,8 @@ class MealPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete),
-        onPressed: () {
-          Navigator.of(context).pop(id);
-        },
+        child: Icon(isFavorite(id) ? Icons.star : Icons.star_border),
+        onPressed: () => toggleFavorite(id),
       ),
     );
   }
